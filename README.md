@@ -1,9 +1,12 @@
-# {Add title of project here}
+#Epiwiki
 
 ## Contributor(s):
 1. Paul Ogawa (https://github.com/Pogawa)
+2. Cory Spitzer (https://github.com/CorySpitzer)
+3. Axel Straube (https://github.com/a-straube)
+4. Jesi Iler (https://github.com/InertialObserver)
 
-##Date:
+##Date: Started May 19th, 2015
 
 ## Installation
 
@@ -27,6 +30,13 @@ If you discover any bugs, feel free to create an issue on GitHub. Please add as 
 possible to help us fixing the possible bug. We also encourage you to help even more by forking and
 sending us a pull request.
 
+
+### Access the DB Schema
+
+ * visit http://ondras.zarovi.cz/sql/demo/
+ * click save/load
+ * click load (from server)
+ * enter epiwiki
 
 ## License
 
