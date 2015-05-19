@@ -2,6 +2,7 @@ ENV['RACK_ENV'] = 'test'
 
 require 'bundler/setup'
 Bundler.require(:default, :test)
+Capybara.app = Sinatra::Application
 Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each {|file| require file}
 
 

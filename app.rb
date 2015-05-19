@@ -16,7 +16,8 @@ end
 
 post('/results') do
   search_word = params.fetch("search_word")
-  erb(:results)
+  @results = Tag.find_by(topic: search_word)
+  redirect '/results'
 end
 
 get('/articles/new') do
@@ -25,5 +26,5 @@ get('/articles/new') do
 end
 
 get('/tags/new') do
-  
+
 end
