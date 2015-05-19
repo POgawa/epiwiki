@@ -29,5 +29,21 @@ get('/articles/new') do
 end
 
 get('/tags/new') do
+<<<<<<< HEAD
 
+=======
+  erb(:tag_form)
+end
+
+post('/tags') do
+  tag_name = params.fetch("tag_name")
+  Tag.create({:name => tag_name})
+  @tags = Tag.all
+  erb(:index)
+end
+
+get('/articles/:id') do
+  @article = Article.find(params.fetch("id").to_i())
+  erb(:article)
+>>>>>>> front-end
 end
