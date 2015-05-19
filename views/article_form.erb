@@ -1,0 +1,22 @@
+<form action="/articles" method="post">
+
+  <input placeholder="Enter Article Name" name="article_name" id="article_name" class="form-control">
+
+<br>
+
+  <div class="form-group">
+    <textarea placeholder="Enter Article Content" name="article_content" id="article_content" class="form-control"></textarea>
+  </div>
+
+<br>
+
+  <% @tags.each do |tag| %>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="tag_id[]" value="<%= tag.id() %>"><%= tag.name %>
+      </label>
+    </div>
+  <% end %>
+
+  <button type="submit">Add Article</button>
+</form>
