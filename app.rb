@@ -9,15 +9,18 @@ get('/') do
   erb(:index)
 end
 
-get('/results') do
+get('/results/:search_word') do |search_word|
   @tags = Tag.all
+  # binding.pry
+  # @results = Tag.all
+  @result = Tag.find_by(topic: search_word)
   erb(:results)
 end
 
 post('/results') do
   search_word = params.fetch("search_word")
-  @results = Tag.find_by(topic: search_word)
-  redirect '/results'
+  @result = Tag.find_by(topic: search_word)
+  redirect "/results/#{search_word}"
 end
 
 get('/articles/new') do
