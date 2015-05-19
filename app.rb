@@ -1,8 +1,7 @@
-require ("sinatra")
-require ('sinatra/reloader')
-require('./lib/##################')
-also_reload('lib/**/*.rb')
-
+require 'bundler/setup'
+require 'pry'
+Bundler.require(:default, :production)
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 
 
