@@ -4,4 +4,4 @@ development:
 
 test:
   adapter: postgresql
-  database: epwiki_test  
+  database: epiwiki_test  
