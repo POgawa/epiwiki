@@ -13,7 +13,7 @@
   <% @tags.each do |tag| %>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="tag_id[]" value="<%= tag.id() %>"><%= tag.name %>
+        <input type="checkbox" name="tag_id[]" value="<%= tag.id() %>"><%= tag.topic %>
       </label>
     </div>
   <% end %>

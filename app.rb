@@ -34,7 +34,7 @@ end
 
 post('/tags') do
   tag_name = params.fetch("tag_name")
-  Tag.create({:name => tag_name})
+  Tag.create({:topic => tag_name})
   @tags = Tag.all
   erb(:index)
 end
