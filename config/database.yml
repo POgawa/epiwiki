@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: epiwiki_development
+
+test:
+  adapter: postgresql
+  database: epwiki_test  
