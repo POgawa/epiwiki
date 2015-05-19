@@ -1,0 +1,2 @@
+#TODO:
+  *implement users: http://stackoverflow.com/questions/3559824/what-is-a-very-simple-authentication-scheme-for-sinatra-rack
