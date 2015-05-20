@@ -29,4 +29,12 @@ describe(Article) do
     end
   end
 
+  it('is equal if and only if name and content are the same') do
+    article1 = Article.create name: "A1", content: 'some stuff'
+    article2 = Article.create name: "A1", content: 'some stuff'
+    article3 = Article.create name: "A2", content: 'some stuff'
+    expect(article1).to eq(article2)
+    expect(article2.==(article3)).to eq(false)
+  end
+
 end

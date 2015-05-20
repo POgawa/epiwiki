@@ -11,6 +11,9 @@ class Article < ActiveRecord::Base
     self.name == article.name
   end
 
+  def ==(other)
+    self.name == other.name && self.content == other.content
+  end
 
 private
 
