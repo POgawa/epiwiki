@@ -30,7 +30,6 @@ describe('overall user testing', type: :feature ) do
       test_article = test_user.articles().create({name: 'testing', content:'capybara is fun!!!!'})
       visit("/user/#{test_user.id}")
       expect(page).to have_content(test_article.name)
-
     end
 
   end

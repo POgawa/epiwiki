@@ -1,5 +1,10 @@
 <%if @result %>
   <%= @result.topic %>
+  <% @result.articles.each do |article| %>
+  <ul>
+    <li><a href = "/articles/<%= article.id %>"><%= article.name %></a></li>
+  </ul>
+  <% end %>
 <%else%>
   <h1>You currently have no results.</h1>
 <%end%>
