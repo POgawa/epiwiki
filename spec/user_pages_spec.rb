@@ -9,4 +9,13 @@ describe('overall user testing', type: :feature ) do
       expect(page).to have_content("Paul")
     end
   end
+
+  describe('the users path') do
+    it('lists all the users') do
+      User.create name: 'cory'
+      visit('/users')
+      expect(page).to have_content('cory')
+    end
+  end
+
 end
