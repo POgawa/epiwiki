@@ -13,10 +13,17 @@
   <% @tags.each do |tag| %>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="tag_id[]" value="<%= tag.id() %>"><%= tag.name %>
+        <input type="checkbox" name="tag_id[]" value="<%= tag.id() %>"><%= tag.topic %>
       </label>
     </div>
   <% end %>
 
-  <button type="submit">Add Article</button>
+    <h4>Author</h4>
+    <select id="user_id" name="user_id" type="text">
+      <% @users.each do |user| %>
+      <option value="<%= user.id() %>"><%= user.name() %></option>
+      <% end %>
+    </select>
+    <br><br>
+  <p><button type="submit">Add Article</button></p>
 </form>
