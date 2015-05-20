@@ -2,8 +2,9 @@
 
 <h3><%= @article.content %></h3>
 
+<h4>Tags: </h4>
 <% @article.tags.each do |tag| %>
-<ul>
-<li><%= tag.name %></li>
-</ul>
+  <ul>
+    <li><%= tag.topic %></li>
+  </ul>
 <% end %>
