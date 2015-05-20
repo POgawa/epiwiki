@@ -1,0 +1,17 @@
+<h1>User page </h1>
+
+<h3>User name: <%=@user.name %></h3>
+
+<%if @user.articles.present?%>
+  <p>Here are the articles by this user: </p>
+  <%@user.articles.each do |article|%>
+    <ul>
+      <li> <a href="/article/<%=article.id%>"><%= article.name%></a></li>
+    </ul>
+  <%end%>
+<%else%>
+  <p>
+    This user has no articles
+  </p>
+
+<%end%>

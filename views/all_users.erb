@@ -1,6 +1,11 @@
-<h2>Users:</h2>
+<h1>Users:</h1>
 
-<% @users.each do |user| %>
-  <br>
-  <%= user.name %> 
-<% end %>
+<%if @users.present? %>
+  <% @users.each do |user| %>
+    <br>
+      <%= user.id%>: <a href="/user/<%= user.id %>"> <%= user.name %></a>
+  <% end %>
+<% else %>
+  <h2>There are no users. <a href="/add_user">Please add a new one</a>   </h2>
+
+<%end%>
