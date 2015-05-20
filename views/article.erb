@@ -1,5 +1,10 @@
 <h1><%= @article.name %></h1>
 
+<h8>By <% @article.users.each do |name| %>
+<%= name.name %>
+<% end %>
+</h8>
+
 <h3><%= @article.content %></h3>
 
 <h4>Tags: </h4>

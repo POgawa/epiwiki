@@ -38,6 +38,7 @@ end
 get('/articles/new') do
   protected!
   @tags = Tag.all
+  @users = User.all
   erb(:article_form)
 end
 
@@ -61,6 +62,9 @@ post('/articles') do
     tag = Tag.find(id)
     @article.tags.push(tag)
   end
+  user_id = params.fetch("user_id")
+  user = User.find(user_id)
+  @article.users.push(user)
   if @article.save()
     redirect to("/articles/#{@article.id}")
   else
@@ -91,4 +95,42 @@ end
 get('/user/:id') do |id|
   @user = User.find(id)
   erb :single_user
+end
+
+get('/admin') do
+  protected!
+  @articles = Article.all
+  @tags = Tag.all
+  @users = User.all
+  erb(:admin)
+end
+
+delete('/delete_article') do
+  article_id = params.fetch("article_id")
+  article_id.each do |article|
+    @article = Article.find(article)
+    @article.delete
+  end
+  @articles = Article.all
+  redirect 'admin'
+end
+
+delete('/delete_tag') do
+  tag_id = params.fetch("tag_id")
+  tag_id.each do |tag|
+    @tag = Tag.find(tag)
+    @tag.delete
+  end
+  @tags = Tag.all
+  redirect 'admin'
+end
+
+delete('/delete_user') do
+  user_id = params.fetch("user_id")
+  user_id.each do |user|
+    @user = User.find(user)
+    @user.delete
+  end
+  @users = User.all
+  redirect 'admin'
 end

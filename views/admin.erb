@@ -1,0 +1,32 @@
+<h4>Delete An Article:</h4>
+<form action="/delete_article" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <% @articles.each do |article| %>
+  <div class="checkbox">
+    <input type="checkbox" name="article_id[]" value="<%= article.id() %>"><%= article.name %>
+  </div>
+  <% end %>
+  <button type="submit">Delete Article(s)</button>
+</form>
+
+<h4>Delete A Tag:</h4>
+<form action="/delete_tag" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <% @tags.each do |tag| %>
+  <div class="checkbox">
+    <input type="checkbox" name="tag_id[]" value="<%= tag.id() %>"><%= tag.topic %>
+  </div>
+  <% end %>
+  <button type="submit">Delete Tag(s)</button>
+</form>
+
+<h4>Delete A User:</h4>
+<form action="/delete_user" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <% @users.each do |user| %>
+  <div class="checkbox">
+    <input type="checkbox" name="user_id[]" value="<%= user.id() %>"><%= user.name %>
+  </div>
+  <% end %>
+  <button type="submit">Delete User(s)</button>
+</form>
