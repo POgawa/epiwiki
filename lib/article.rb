@@ -7,10 +7,16 @@ class Article < ActiveRecord::Base
 
   before_save :downcase_content_and_name
 
+  def revision? article
+    self.name == article.name
+  end
+
+
 private
 
   def downcase_content_and_name
     self.content.downcase!
     self.name.downcase!
   end
+
 end
