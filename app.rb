@@ -52,6 +52,23 @@ post('/tags') do
   erb(:index)
 end
 
+post('/articles') do
+  name = params.fetch("article_name")
+  content = params.fetch("article_content")
+  @article = Article.new({:name => name, :content => content})
+  tag_id = params.fetch("tag_id")
+  tag_id.each do |id|
+    tag = Tag.find(id)
+    @article.tags.push(tag)
+  end
+  if @article.save()
+    redirect to("/articles/#{@article.id}")
+  else
+    @articles = Article.all()
+  end
+  erb(:article)
+end
+
 get('/articles/:id') do
   @article = Article.find(params.fetch("id").to_i())
   erb :article
