@@ -18,4 +18,26 @@ describe('overall user testing', type: :feature ) do
     end
   end
 
+  describe('the single user path') do
+    it('displays a single user') do
+      test_user = User.create name: 'cory'
+      visit("/user/#{test_user.id}")
+      expect(page).to have_content('cory')
+    end
+
+    it('displays the articles written or edited by user') do
+      test_user = User.create name: 'cory'
+      test_article = test_user.articles().create({name: 'testing', content:'capybara is fun!!!!'})
+      visit("/user/#{test_user.id}")
+      expect(page).to have_content(test_article.name)
+
+    end
+
+  end
+
+
+
+
+
+
 end

@@ -87,3 +87,8 @@ post('/users') do
   User.create(name: params.fetch('user_name'))
   redirect 'users'
 end
+
+get('/user/:id') do |id|
+  @user = User.find(id)
+  erb :single_user
+end
