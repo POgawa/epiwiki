@@ -11,9 +11,8 @@ end
 
 get('/results/:search_word') do |search_word|
   @tags = Tag.all
-  # binding.pry
-  # @results = Tag.all
   @result = Tag.find_by(topic: search_word)
+  #  @result = Tag.where(search_word LIKE :topic)
   erb(:results)
 end
 
@@ -36,6 +35,7 @@ post('/tags') do
   tag_name = params.fetch("tag_name")
   Tag.create({:topic => tag_name})
   @tags = Tag.all
+  redirect to("/")
   erb(:index)
 end
 

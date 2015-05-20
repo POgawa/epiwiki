@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20150519190453) do
   end
 
   create_table "tags", force: :cascade do |t|
+    t.string   "topic"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "topic"
   end
 
   create_table "users", force: :cascade do |t|
