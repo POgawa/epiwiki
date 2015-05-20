@@ -3,7 +3,19 @@ require 'pry'
 Bundler.require(:default, :production)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+# from www.sinatrarb.com/faq.html#auth
+helpers do
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, erb(:index)
+  end
 
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+  end
+end
 
 get('/') do
   erb(:index)
@@ -24,6 +36,7 @@ post('/results') do
 end
 
 get('/articles/new') do
+  protected!
   @tags = Tag.all
   erb(:article_form)
 end
@@ -41,5 +54,19 @@ end
 
 get('/articles/:id') do
   @article = Article.find(params.fetch("id").to_i())
-  erb(:article)
+  erb :article
+end
+
+get('/add_user') do
+  erb :user_form
+end
+
+get('/users') do
+  @users = User.all
+  erb(:all_users)
+end
+
+post('/users') do
+  User.create(name: params.fetch('user_name'))
+  redirect 'users'
 end
