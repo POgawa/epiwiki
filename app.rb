@@ -150,3 +150,10 @@ delete('/delete_user') do
   @users = User.all
   redirect 'admin'
 end
+
+delete '/article/delete/:id' do |id|
+  protected!
+  @article = Article.find(id)
+  @article.delete
+  redirect '/'
+end
