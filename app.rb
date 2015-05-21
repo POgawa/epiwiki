@@ -13,11 +13,12 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['login'], ENV['password']]
   end
 end
 
 get('/') do
+  @tags = Tag.all
   erb(:index)
 end
 
@@ -85,13 +86,15 @@ get('/articles/:id/edit') do |id|
   erb :article_edit
 end
 
-post('/articles/:id/edit') do |id, new_content, description|
+post('/articles/:id/edit') do |id|
   article = Article.find(id)
   revised_article = Article.create(
-                                    name: article.name,
-                                    content: new_content,
-                                    revision_description: description)
-  redirect "/articles/#{articles.id}"
+                name: article.name,
+                content: params.fetch('new_content'),
+                revision_description: params.fetch('description'))
+
+  redirect to "/articles/#{revised_article.id}"
+
 end
 
 get('/add_user') do
@@ -116,6 +119,7 @@ end
 get('/admin') do
   protected!
   @articles = Article.all
+  binding.pry
   @tags = Tag.all
   @users = User.all
   erb(:admin)
