@@ -57,10 +57,12 @@ post('/articles') do
   name = params.fetch("article_name")
   content = params.fetch("article_content")
   @article = Article.new({:name => name, :content => content})
-  tag_id = params.fetch("tag_id")
-  tag_id.each do |id|
-    tag = Tag.find(id)
-    @article.tags.push(tag)
+  if params.has_key?('tag_id')
+    tag_id = params.fetch("tag_id")
+    tag_id.each do |id|
+      tag = Tag.find(id)
+      @article.tags.push(tag)
+    end
   end
   user_id = params.fetch("user_id")
   user = User.find(user_id)

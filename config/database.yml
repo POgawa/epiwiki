@@ -1,7 +1,9 @@
 development:
   adapter: postgresql
   database: epiwiki_development
+  template: template0
 
 test:
   adapter: postgresql
-  database: epiwiki_test  
+  database: epiwiki_test
+  template: template0  
