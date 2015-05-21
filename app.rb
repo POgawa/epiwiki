@@ -83,6 +83,8 @@ end
 
 get('/articles/:id/edit') do |id|
   @article = Article.find(id)
+  binding.pry
+  @revisions = @article.user_revisions
   erb :article_edit
 end
 
