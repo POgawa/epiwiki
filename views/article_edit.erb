@@ -1,0 +1,5 @@
+<h4>Edit <%=@article.name%></h4>
+
+<form action="/articles/:id/edit" method="post">
+  <input name="new_content" value="<%=@article.content%>">
+</form>

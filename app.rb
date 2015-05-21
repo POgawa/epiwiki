@@ -80,6 +80,21 @@ get('/articles/:id') do
   erb :article
 end
 
+
+get('/articles/:id/edit') do |id|
+  @article = Article.find(id)
+  erb :article_edit
+end
+
+post('/articles/:id/edit') do |id, new_content, description|
+  article = Article.find(id)
+  revised_article = Article.create(
+                                    name: article.name,
+                                    content: new_content,
+                                    revision_description: description)
+  redirect "/articles/#{articles.id}"
+end
+
 get('/add_user') do
   erb :user_form
 end
