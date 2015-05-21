@@ -4,7 +4,7 @@
 1. Paul Ogawa (https://github.com/Pogawa)
 2. Cory Spitzer (https://github.com/CorySpitzer)
 3. Axel Straube (https://github.com/a-straube)
-4. Jesi Iler (https://github.com/InertialObserver)
+4. Jessi Iler (https://github.com/InertialObserver)
 
 ##Date: Started May 19th, 2015
 

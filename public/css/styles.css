@@ -4,14 +4,21 @@
 
 h1 {
   text-align:center;
+
 }
 
 /*h2 {
     color: rgb(255,0,0);
 }*/
 
+h3 {
+  color: #fff;
+  background: #666;
+  text-shadow: 0px 1px 1px #000;
+}
+
 body {
-  /*background-image: url("../images/grass.jpg");*/
+
   background: url("../images/grass.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -23,24 +30,3 @@ form {
 margin: 0 auto;
 width:250px;
 }
-
-/*.jumbotron {
-  position: relative;
-  background: #0000FF url("jumbotron-lg.png") center center;
-  width: 100%;
-  height: 1%;
-  background-size: cover;
-  overflow: hidden;
-  background: rgb(200, 54, 54); /* This is for ie8 and below */
-  /*background: rgba(200, 54, 54, 0.5);
-      padding: 0.5em 0.6em;
-    h1 {
-        font-size: 2em;
-    }
-    p {
-        font-size: 1.2em;
-        .btn {
-            padding: 0.5em;
-        }
-    }
-/*}*
