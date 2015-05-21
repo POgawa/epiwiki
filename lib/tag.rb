@@ -9,5 +9,4 @@ private
   def downcase_topic
     self.topic.downcase!
   end
-
 end

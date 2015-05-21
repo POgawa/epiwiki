@@ -1,15 +1,13 @@
 <form action="/articles" method="post">
-    <h3>Add a New Article:</h3>
+  <h3>Add a New Article:</h3>
   <input placeholder="Enter Article Name" name="article_name" id="article_name" class="form-control">
-
-<br>
-
+  <br>
   <div class="form-group">
     <textarea placeholder="Enter Article Content" name="article_content" id="article_content" class="form-control"></textarea>
   </div>
-
-<br>
+  <br>
     <h4>Choose Relevant Tags</h4>
+
   <% @tags.each do |tag| %>
     <div class="checkbox">
       <label>
@@ -17,13 +15,13 @@
       </label>
     </div>
   <% end %>
-
-    <h4>Author</h4>
-    <select id="user_id" name="user_id" type="text">
-      <% @users.each do |user| %>
-      <option value="<%= user.id() %>"><%= user.name() %></option>
-      <% end %>
-    </select>
-    <br><br>
+  <h4>Author</h4>
+  <select id="user_id" name="user_id" type="text">
+    <% @users.each do |user| %>
+    <option value="<%= user.id() %>"><%= user.name() %></option>
+    <% end %>
+  </select>
+  <br>
+  <br>
   <p><button type="submit">Add Article</button></p>
 </form>
