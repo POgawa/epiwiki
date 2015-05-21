@@ -15,6 +15,11 @@ describe 'the edit article path', type: :feature do
     expect(page).to have_content "go home"
   end
 
-  
+  # it 'displays the number of revisions the article has had' do
+  #   article1 = Article.create name: 'stuff', content: 'blah blah'
+  #   article2 = Article.create name: 'stuff', content: 'blah blahblah yakity shmakity'
+  #   expect(page).to have_content "This article has 1 revision(s)."
+  # end
+
 
 end

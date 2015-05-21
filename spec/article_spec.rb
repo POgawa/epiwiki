@@ -29,6 +29,15 @@ describe(Article) do
     end
   end
 
+  describe('#revisions') do
+    it 'count the number of revisions' do
+      article1 = Article.create name: "A1", content: 'some stuff'
+      Article.create name: "A1", content: 'some more stuff'
+      Article.create name: "A1", content: 'some other stuff'
+      expect(article1.revisions.length).to eq(3)
+    end
+  end
+
   it('is equal if and only if name and content are the same') do
     article1 = Article.create name: "A1", content: 'some stuff'
     article2 = Article.create name: "A1", content: 'some stuff'
@@ -36,5 +45,4 @@ describe(Article) do
     expect(article1).to eq(article2)
     expect(article2.==(article3)).to eq(false)
   end
-
 end

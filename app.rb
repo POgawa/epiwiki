@@ -93,7 +93,7 @@ post('/articles/:id/edit') do |id|
                 content: params.fetch('new_content'),
                 revision_description: params.fetch('description'))
 
-  redirect to "/articles/#{revised_article.id}"
+  redirect "/articles/#{revised_article.id}"
 
 end
 
