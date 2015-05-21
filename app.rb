@@ -36,7 +36,6 @@ post('/results') do
 end
 
 get('/articles/new') do
-  protected!
   @tags = Tag.all
   @users = User.all
   erb(:article_form)
@@ -68,11 +67,11 @@ post('/articles') do
   user = User.find(user_id)
   @article.users.push(user)
   if @article.save()
-    redirect to("/articles/#{@article.id}")
+    redirect "/articles/#{@article.id}"
   else
     @articles = Article.all()
+    redirect "/articles/new"
   end
-  erb(:article)
 end
 
 get('/articles/:id') do

@@ -6,4 +6,4 @@ development:
 test:
   adapter: postgresql
   database: epiwiki_test
-  template: template0  
+  template: template0
