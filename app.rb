@@ -23,9 +23,8 @@ end
 
 get('/results/:search_word') do |search_word|
   @tags = Tag.all
-  # binding.pry
-  # @results = Tag.all
   @result = Tag.find_by(topic: search_word)
+  #  @result = Tag.where(search_word LIKE :topic)
   erb(:results)
 end
 
@@ -36,7 +35,6 @@ post('/results') do
 end
 
 get('/articles/new') do
-  protected!
   @tags = Tag.all
   @users = User.all
   erb(:article_form)
@@ -50,6 +48,7 @@ post('/tags') do
   tag_name = params.fetch("tag_name")
   Tag.create({:topic => tag_name})
   @tags = Tag.all
+  redirect to("/")
   erb(:index)
 end
 
@@ -57,20 +56,22 @@ post('/articles') do
   name = params.fetch("article_name")
   content = params.fetch("article_content")
   @article = Article.new({:name => name, :content => content})
-  tag_id = params.fetch("tag_id")
-  tag_id.each do |id|
-    tag = Tag.find(id)
-    @article.tags.push(tag)
+  if params.has_key?('tag_id')
+    tag_id = params.fetch("tag_id")
+    tag_id.each do |id|
+      tag = Tag.find(id)
+      @article.tags.push(tag)
+    end
   end
   user_id = params.fetch("user_id")
   user = User.find(user_id)
   @article.users.push(user)
   if @article.save()
-    redirect to("/articles/#{@article.id}")
+    redirect "/articles/#{@article.id}"
   else
     @articles = Article.all()
+    redirect "/articles/new"
   end
-  erb(:article)
 end
 
 get('/articles/:id') do
@@ -148,4 +149,11 @@ delete('/delete_user') do
   end
   @users = User.all
   redirect 'admin'
+end
+
+delete '/article/delete/:id' do |id|
+  protected!
+  @article = Article.find(id)
+  @article.delete
+  redirect '/'
 end
