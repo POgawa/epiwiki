@@ -18,6 +18,7 @@ helpers do
 end
 
 get('/') do
+  @tags = Tag.all
   erb(:index)
 end
 
@@ -84,13 +85,15 @@ get('/articles/:id/edit') do |id|
   erb :article_edit
 end
 
-post('/articles/:id/edit') do |id, new_content, description|
+post('/articles/:id/edit') do |id|
   article = Article.find(id)
   revised_article = Article.create(
-                                    name: article.name,
-                                    content: new_content,
-                                    revision_description: description)
-  redirect "/articles/#{articles.id}"
+                name: article.name,
+                content: params.fetch('new_content'),
+                revision_description: params.fetch('description'))
+
+  redirect to "/articles/#{revised_article.id}"
+
 end
 
 get('/add_user') do
