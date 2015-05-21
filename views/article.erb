@@ -13,3 +13,10 @@
     <li><%= tag.topic %></li>
   </ul>
 <% end %>
+
+<a href="/articles/<%=@article.id%>/edit">Edit your article</a>
+
+<form action="/article/delete/<%= @article.id %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Article</button>
+</form>

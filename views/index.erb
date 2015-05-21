@@ -5,3 +5,12 @@
   <input placeholder="Enter keyword to search" id="search_word" name="search_word" type="text">
   <button type="submit">Search</button>
 </form>
+
+<div class='container'>
+  <h2>Current tags:</h2>
+  <%@tags.each do |tag|%>
+  <ul>
+    <li class="col-md-6"> <a href="/results/<%=tag.topic%>"><%=tag.topic%></a></li>
+  </ul>
+  <%end%>
+</div>

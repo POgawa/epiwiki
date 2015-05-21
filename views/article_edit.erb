@@ -1,0 +1,14 @@
+<h4>Edit: <%=@article.name%></h4>
+
+<form action="/articles/<%=@article.id%>/edit" method="post">
+  <div class="form-group">
+    <textarea placeholder="<%=@article.content%>" name="new_content" id="new_content" class="form-control"></textarea>
+  </div>
+
+  <div class="form-group">
+    <h4>Add revision description</h4>
+    <input name="description" id="description" type="text">
+  </div>
+
+  <button type="submit" >submit</button>
+</form>
