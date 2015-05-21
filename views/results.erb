@@ -1,10 +1,10 @@
-<%if @result %>
-  <%= @result.topic %>
+<%if @result.articles.present? %>
+  <h1>Articles with the <%= @result.topic %> tag:</h1>
   <% @result.articles.each do |article| %>
   <ul>
-    <li><a href = "/articles/<%= article.id %>"><%= article.name %></a></li>
+    <li> <h3><a href = "/articles/<%= article.id %>"><%= article.name %></a></h3></li>
   </ul>
   <% end %>
 <%else%>
-  <h1>You currently have no results.</h1>
+  <h1>You currently have no artcles with this tag.</h1>
 <%end%>
