@@ -2,7 +2,7 @@
   <h1>Articles with the <%= @result.topic %> tag:</h1>
   <% @result.articles.each do |article| %>
   <ul>
-    <li> <h3><a href = "/articles/<%= article.id %>"><%= article.name %></a></h3></li>
+    <li> <h2 class= "transparent"><a href = "/articles/<%= article.id %>"><%= article.name %></a></h></li>
   </ul>
   <% end %>
 <%else%>
