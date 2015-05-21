@@ -13,7 +13,7 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['login'], ENV['password']]
   end
 end
 
@@ -24,8 +24,6 @@ end
 
 get('/results/:search_word') do |search_word|
   @tags = Tag.all
-  # binding.pry
-  # @results = Tag.all
   @result = Tag.find_by(topic: search_word)
   erb(:results)
 end
@@ -37,7 +35,6 @@ post('/results') do
 end
 
 get('/articles/new') do
-  protected!
   @tags = Tag.all
   @users = User.all
   erb(:article_form)
@@ -118,6 +115,7 @@ end
 get('/admin') do
   protected!
   @articles = Article.all
+  binding.pry
   @tags = Tag.all
   @users = User.all
   erb(:admin)

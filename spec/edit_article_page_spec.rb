@@ -14,4 +14,7 @@ describe 'the edit article path', type: :feature do
     click_button 'submit'
     expect(page).to have_content "go home"
   end
+
+  
+
 end
