@@ -25,7 +25,9 @@
   <h3>This article has <%=@revisions.length - 1%> revision(s):</h3>
   <ol>
     <% @revisions.each do |revision| %>
-      <li><%= revision.revision_description %></li>
+      <li>
+        <a href="/articles/<%=revision.id%>"><%= revision.revision_description %></a>
+      </li>
     <% end %>
   </ol>
 <%else%>
