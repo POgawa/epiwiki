@@ -6,7 +6,7 @@ describe 'the single article path', type: :feature do
     article2 = Article.create name: 'stuff', content: 'blah blahblah yakity shmakity'
     article3 = Article.create name: 'stuff', content: 'yakity shmakity'
     visit "/articles/#{article1.id}"
-    expect(page).to have_content "This article has 2 revision(s)"
+    expect(page).to have_content "This article has 3 version(s)"
   end
 
   it 'displays the list of article revisions' do
