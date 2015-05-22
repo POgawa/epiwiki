@@ -77,6 +77,7 @@ end
 
 get('/articles/:id') do
   @article = Article.find(params.fetch("id").to_i())
+  @revisions = @article.user_revisions
   erb :article
 end
 

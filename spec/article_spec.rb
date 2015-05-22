@@ -30,11 +30,18 @@ describe(Article) do
   end
 
   describe('#user_revisions') do
-    it 'count the number of user revisions' do
+    it 'allows us to count the number of user revisions' do
       article1 = Article.create name: "A1", content: 'some stuff'
       Article.create name: "A1", content: 'some more stuff'
       Article.create name: "A1", content: 'some other stuff'
       expect(article1.user_revisions.length).to eq(3)
+    end
+
+    it 'returns a list of articles that are revisions' do
+      article1 = Article.create name: "A1", content: 'some stuff'
+      article2 = Article.create name: "A1", content: 'some more stuff'
+      article3 = Article.create name: "A1", content: 'some other stuff'
+      expect(article1.user_revisions).to eq([article1, article2, article3])
     end
   end
 
