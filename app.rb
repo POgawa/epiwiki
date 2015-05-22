@@ -13,7 +13,7 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'aVeryGoodPassWord']
   end
 end
 
@@ -56,7 +56,8 @@ end
 post('/articles') do
   name = params.fetch("article_name")
   content = params.fetch("article_content")
-  @article = Article.new({:name => name, :content => content})
+  @article = Article.new(name: name, content: content,
+                         revision_description: "Original article")
   if params.has_key?('tag_id')
     tag_id = params.fetch("tag_id")
     tag_id.each do |id|
@@ -84,8 +85,6 @@ end
 
 get('/articles/:id/edit') do |id|
   @article = Article.find(id)
-  # This should be in article/id but not in edit
-  # @revisions = @article.user_revisions
   erb :article_edit
 end
 
@@ -123,11 +122,11 @@ get('/user/:id') do |id|
 end
 
 get('/admin') do
-  protected!
+
   @articles = Article.all
-  binding.pry
   @tags = Tag.all
   @users = User.all
+  protected!
   erb(:admin)
 end
 
