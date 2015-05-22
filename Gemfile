@@ -7,8 +7,6 @@ gem 'pg'
 gem 'rake'
 
 group(:production) do
-  gem 'heroku'
-
   gem 'sinatra'
 end
 
