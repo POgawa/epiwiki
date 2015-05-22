@@ -20,3 +20,9 @@
   <input name="_method" type="hidden" value="delete">
   <button type="submit">Delete Article</button>
 </form>
+
+<%if @revisions %>
+  <h3>This article has <%=@revisions.length - 1%> revision(s).</h3>
+<%else%>
+  <h3>There are no current revisions.</h3>
+<%end%>
