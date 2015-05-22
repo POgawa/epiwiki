@@ -34,10 +34,12 @@ end
 
 Article.delete_all
 article_components = [
-  ["Test Article", "Test article content", "css"]
+  ["Test Article", "Test article content", "css", "It's the original!"]
 ]
 
-article_components.each do |name, content, topic|
+article_components.each do |name, content, topic, revision_description|
   tag = Tag.find_by topic: topic
-  tag.articles.create(name: name, content: content)
+  tag.articles.create(name: name,
+                      content: content,
+                      revision_description: revision_description)
 end

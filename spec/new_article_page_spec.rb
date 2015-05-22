@@ -12,7 +12,7 @@ describe 'the add article path', type: :feature do
     fill_in 'article_name', with: 'testing'
     fill_in 'article_content', with: 'Test everything, including your tests'
     select('Whykins', from: 'user_id')
-    click_button 'Add Article'
+    click_button 'Submit Article'
     expect(page).to have_content "testing By Whykins"
   end
 end
