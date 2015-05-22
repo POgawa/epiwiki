@@ -12,10 +12,11 @@ describe('overall page testing', {type: :feature} ) do
     it('searches for a tag, displays results') do
       tag = Tag.create(topic: 'activerecord')
       tag2 = Tag.create(topic: 'sinatra')
+      tag2.articles.create(name: 'sinatra', content: 'Stuff')
       visit('/')
       fill_in('search_word', with: 'sinatra')
       click_button('Search')
-      expect(page).to have_content(tag2.topic)
+      expect(page).to have_content('Articles with the sinatra tag:')
     end
   end
 

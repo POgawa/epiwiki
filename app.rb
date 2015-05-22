@@ -13,7 +13,7 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['login'], ENV['password']]
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
   end
 end
 
@@ -77,24 +77,30 @@ end
 
 get('/articles/:id') do
   @article = Article.find(params.fetch("id").to_i())
+  @revisions = @article.user_revisions
   erb :article
 end
 
 
 get('/articles/:id/edit') do |id|
   @article = Article.find(id)
+  # This should be in article/id but not in edit
+  # @revisions = @article.user_revisions
   erb :article_edit
 end
 
 post('/articles/:id/edit') do |id|
   article = Article.find(id)
+  if params.fetch('new_content').length > 0
+    content = params.fetch('new_content')
+  else
+    redirect "/articles/#{id}"
+  end
   revised_article = Article.create(
                 name: article.name,
-                content: params.fetch('new_content'),
+                content: content,
                 revision_description: params.fetch('description'))
-
-  redirect to "/articles/#{revised_article.id}"
-
+  redirect "/articles/#{revised_article.id}"
 end
 
 get('/add_user') do

@@ -7,12 +7,18 @@ class Article < ActiveRecord::Base
 
   before_save :downcase_content_and_name
 
-  def revision? article
-    self.name == article.name
+  def revision?(article)
+    self.name == article.name && self.created_at != article.created_at
   end
 
   def ==(other)
     self.name == other.name && self.content == other.content
+  end
+
+  def user_revisions
+    # original_article = Article.where(name: self.name).first
+    # The where method might be returning a single object, but we want many
+    Article.where(name: self.name).order :created_at
   end
 
 private

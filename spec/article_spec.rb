@@ -29,6 +29,22 @@ describe(Article) do
     end
   end
 
+  describe('#user_revisions') do
+    it 'allows us to count the number of user revisions' do
+      article1 = Article.create name: "A1", content: 'some stuff'
+      Article.create name: "A1", content: 'some more stuff'
+      Article.create name: "A1", content: 'some other stuff'
+      expect(article1.user_revisions.length).to eq(3)
+    end
+
+    it 'returns a list of articles that are revisions' do
+      article1 = Article.create name: "A1", content: 'some stuff'
+      article2 = Article.create name: "A1", content: 'some more stuff'
+      article3 = Article.create name: "A1", content: 'some other stuff'
+      expect(article1.user_revisions).to eq([article1, article2, article3])
+    end
+  end
+
   it('is equal if and only if name and content are the same') do
     article1 = Article.create name: "A1", content: 'some stuff'
     article2 = Article.create name: "A1", content: 'some stuff'
@@ -36,5 +52,4 @@ describe(Article) do
     expect(article1).to eq(article2)
     expect(article2.==(article3)).to eq(false)
   end
-
 end
