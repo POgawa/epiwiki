@@ -14,13 +14,4 @@ describe 'the edit article path', type: :feature do
     click_button 'submit'
     expect(page).to have_content "go home"
   end
-
-  it 'displays the number of revisions the article has had' do
-    article1 = Article.create name: 'stuff', content: 'blah blah'
-    article2 = Article.create name: 'stuff', content: 'blah blahblah yakity shmakity'
-    article3 = Article.create name: 'stuff', content: 'yakity shmakity'
-    visit "/articles/#{article1.id}"
-    expect(page).to have_content "This article has 2 revision(s)."
-  end
-
 end

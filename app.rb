@@ -84,7 +84,8 @@ end
 
 get('/articles/:id/edit') do |id|
   @article = Article.find(id)
-  @revisions = @article.user_revisions
+  # This should be in article/id but not in edit
+  # @revisions = @article.user_revisions
   erb :article_edit
 end
 

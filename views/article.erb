@@ -21,8 +21,13 @@
   <button type="submit">Delete Article</button>
 </form>
 
-<%if @revisions %>
-  <h3>This article has <%=@revisions.length - 1%> revision(s).</h3>
+<%if @revisions%>
+  <h3>This article has <%=@revisions.length - 1%> revision(s):</h3>
+  <ol>
+    <% @revisions.each do |revision| %>
+      <li><%= revision.revision_description %></li>
+    <% end %>
+  </ol>
 <%else%>
   <h3>There are no current revisions.</h3>
 <%end%>
