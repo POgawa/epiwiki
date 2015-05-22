@@ -6,11 +6,11 @@
     <textarea placeholder="Content" name="article_content" id="article_content" class="form-control"></textarea>
   </div>
   <br>
-    <h4 class="transparent">Choose Relevant Tags</h4>
+    <h4 class="transparent">Choose Relevant Tags:</h4>
 
   <% @tags.each do |tag| %>
     <div class="checkbox">
-      <label>
+      <label class="transparent">
         <input type="checkbox" name="tag_id[]" value="<%= tag.id() %>"><%= tag.topic %>
       </label>
     </div>

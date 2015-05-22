@@ -28,14 +28,11 @@ h1 {
 body {
 
   background: url("../images/grass.jpg") no-repeat center center fixed;
-
-  /*background-image: url("../images/grass.jpg");*/
-  /*background: url("/images/grass.jpg") no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Open Sans', sans-serif;*/
 
 }
 
@@ -70,7 +67,5 @@ ul#menu li a:hover {
 
 .list-inline {
   margin: 20px;
-  padding: 100px;
-
 
 }
