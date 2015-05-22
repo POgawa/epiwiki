@@ -9,17 +9,19 @@
 <!-- <div class='container'>
   <h2 class="transparent">Current tags:</h2>
   <%@tags.each do |tag|%>
-  <ul style="list-style: none;">
-    <li class="col-md-6"> <a href="/results/<%=tag.topic%>"><%=tag.topic%></a></li>
+  <ul class="list-inline">
+    <li> <a href="/results/<%=tag.topic%>"><%=tag.topic%></a></li>
   </ul>
   <%end%>
 </div> -->
 
 <div class='container'>
 <h2 class="transparent">Current tags:</h2>
+<div class='row'>
   <%@tags.each do |tag|%>
-  <ul id="menu" style="list-style: none;">
-    <li> <a href="/results/<%=tag.topic%>"><%=tag.topic%></a></li>
+  <ul id="menu" class="list-inline">
+    <li class="col-md-2"> <a href="/results/<%=tag.topic%>"><%=tag.topic%></a></li>
   </ul>
   <%end%>
+</div>
 </div>
