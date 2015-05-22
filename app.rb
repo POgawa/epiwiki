@@ -83,20 +83,22 @@ end
 
 get('/articles/:id/edit') do |id|
   @article = Article.find(id)
-  binding.pry
   @revisions = @article.user_revisions
   erb :article_edit
 end
 
 post('/articles/:id/edit') do |id|
   article = Article.find(id)
+  if params.fetch('new_content').length > 0
+    content = params.fetch('new_content')
+  else
+    redirect "/articles/#{id}"
+  end
   revised_article = Article.create(
                 name: article.name,
-                content: params.fetch('new_content'),
+                content: content,
                 revision_description: params.fetch('description'))
-
   redirect "/articles/#{revised_article.id}"
-
 end
 
 get('/add_user') do
