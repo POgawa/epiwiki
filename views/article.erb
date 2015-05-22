@@ -1,20 +1,20 @@
-<h1><%= @article.name %></h1>
+<h1 class="transparent"><%= @article.name %></h1>
 
-<h8>By <% @article.users.each do |name| %>
+<h8 class="transparent">By <% @article.users.each do |name| %>
 <%= name.name %>
 <% end %>
 </h8>
 
-<h3><%= @article.content %></h3>
+<h3 class="transparent"><%= @article.content %></h3>
 
-<h4>Tags: </h4>
+<h4 class="transparent" font-family="Josefin Slab">Tags: </h4>
 <% @article.tags.each do |tag| %>
   <ul>
     <li><%= tag.topic %></li>
   </ul>
 <% end %>
 
-<a href="/articles/<%=@article.id%>/edit">Edit your article</a>
+<a href="/articles/<%=@article.id%>/edit"><h3 class="transparent">Edit your article</h3></a>
 
 <form action="/article/delete/<%= @article.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
@@ -22,7 +22,7 @@
 </form>
 
 <%if @revisions%>
-  <h3>This article has <%=@revisions.length - 1%> revision(s):</h3>
+  <h3 class="transparent">This article has <%=@revisions.length - 1%> revision(s):</h3>
   <ol>
     <% @revisions.each do |revision| %>
       <li>
@@ -31,5 +31,5 @@
     <% end %>
   </ol>
 <%else%>
-  <h3>There are no current revisions.</h3>
+  <h3 class="transparent">There are no current revisions.</h3>
 <%end%>

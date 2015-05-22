@@ -1,21 +1,21 @@
 <form action="/articles" method="post">
   <h3>Add a New Article:</h3>
-  <input placeholder="Enter Article Name" name="article_name" id="article_name" class="form-control">
+  <input placeholder="Title" name="article_name" id="article_name" class="form-control">
   <br>
   <div class="form-group">
-    <textarea placeholder="Enter Article Content" name="article_content" id="article_content" class="form-control"></textarea>
+    <textarea placeholder="Content" name="article_content" id="article_content" class="form-control"></textarea>
   </div>
   <br>
-    <h4>Choose Relevant Tags</h4>
+    <h4 class="transparent">Choose Relevant Tags:</h4>
 
   <% @tags.each do |tag| %>
     <div class="checkbox">
-      <label>
+      <label class="transparent">
         <input type="checkbox" name="tag_id[]" value="<%= tag.id() %>"><%= tag.topic %>
       </label>
     </div>
   <% end %>
-  <h4>Author</h4>
+  <h4 class="transparent">Author</h4>
   <select id="user_id" name="user_id" type="text">
     <% @users.each do |user| %>
     <option value="<%= user.id() %>"><%= user.name() %></option>
@@ -23,5 +23,5 @@
   </select>
   <br>
   <br>
-  <p><button type="submit">Add Article</button></p>
+  <p><button type="submit">Submit Article</button></p>
 </form>

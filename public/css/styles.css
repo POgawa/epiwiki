@@ -8,34 +8,64 @@ h1 {
 }
 
 .transparent {
+
   background: #7f7f7f;
   background: rgba(255, 255, 255, 0.5);
+
 
 }
 
 /*h2 {
-    color: rgb(255,0,0);
+  text-align:center;
 }*/
 
-h3 {
+/*h3 {
   color: #fff;
   background: #666;
   text-shadow: 0px 1px 1px #000;
-}
+}*/
 
 body {
 
   background: url("../images/grass.jpg") no-repeat center center fixed;
-
-  /*background-image: url("../images/grass.jpg");*/
-  /*background: url("/images/grass.jpg") no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  /*font-family: 'Open Sans', sans-serif;*/
+
 }
 
 form {
 margin: 0 auto;
 width:250px;
+}
+
+ul#menu {
+    padding: 0;
+}
+
+ul#menu li  {
+    display:inline;
+    list-style-type: none;
+    padding-right: 15px;
+    margin: 10px;
+}
+
+ul#menu li a {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px 4px 0 0;
+
+}
+
+ul#menu li a:hover {
+    background-color: purple;
+}
+
+.list-inline {
+  margin: 20px;
+
 }
